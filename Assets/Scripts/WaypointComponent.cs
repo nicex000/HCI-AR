@@ -5,7 +5,20 @@ using UnityEngine;
 public class WaypointComponent : MonoBehaviour
 {
     [SerializeField] private WaypointComponent nextWaypoint;
-    private bool isCleared;
+    [SerializeField] private bool requiresInteraction;
+    [SerializeField] private bool disableAgent;
+
+    private bool isCleared = false;
+
+    public Vector3 position
+    {
+        get { return transform.position; }
+    }
+
+    public bool DisableAgent
+    {
+        get { return disableAgent; }
+    }
 
     public WaypointComponent GetNextWaypoint()
     {
@@ -16,14 +29,18 @@ public class WaypointComponent : MonoBehaviour
     {
         return isCleared;
     }
-
-    public Vector3 GetWaypointPosition()
+    
+    public void SetWaypointState(bool clearState, bool fromInteractable = false)
     {
-        return transform.position;
-    }
-
-    public void SetWaypointState(bool clearState)
-    {
-        isCleared = clearState;
+        if (!clearState) isCleared = false;
+        else if (requiresInteraction)
+        {
+            if (fromInteractable)
+                isCleared = clearState;
+        }
+        else
+        {
+            isCleared = clearState;
+        }
     }
 }

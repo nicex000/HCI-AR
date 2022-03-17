@@ -123,7 +123,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3671858779331352424}
   - {fileID: 1858215955291930459}
@@ -571,10 +571,66 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_TileSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: dfae225b72d97d94b8d756a5ea9dad40,
+        type: 2}
+    - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_LayerMask.m_Bits
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037626377478521748, guid: 4b0f934911876f14888d477ffecf566c,
         type: 3}
       propertyPath: m_Name
       value: map
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678448836133035294, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: wallMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784374192129409838, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_Speed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784374192129409838, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784374192129409838, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8784374192129409838, guid: 4b0f934911876f14888d477ffecf566c,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b0f934911876f14888d477ffecf566c, type: 3}
