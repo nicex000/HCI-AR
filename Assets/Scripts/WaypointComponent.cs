@@ -7,6 +7,7 @@ public class WaypointComponent : MonoBehaviour
     [SerializeField] private WaypointComponent nextWaypoint;
     [SerializeField] private bool requiresInteraction;
     [SerializeField] private bool disableAgent;
+    [SerializeField] private WaypointType type = WaypointType.WAYPOINT;
 
     private bool isCleared = false;
 
@@ -36,11 +37,55 @@ public class WaypointComponent : MonoBehaviour
         else if (requiresInteraction)
         {
             if (fromInteractable)
-                isCleared = clearState;
+                DoClear();
         }
         else
         {
-            isCleared = clearState;
+            DoClear();
         }
     }
+
+    private void DoClear()
+    {
+        if (type == WaypointType.PICKUP)
+        {
+            GameObject slot = GameObject.FindGameObjectWithTag("PickupSlot");
+            bool hasStuff = slot == null;
+            if (hasStuff) return;
+            foreach (var children in GetComponentsInChildren<Transform>())
+            {
+                if (children.parent != this.transform) continue;
+                hasStuff = true;
+                children.SetParent(slot.transform);
+                children.localPosition = Vector3.zero;
+            }
+
+            if (!hasStuff) return;
+        }
+
+        if (type == WaypointType.DROP_POINT)
+        {
+            GameObject slot = GameObject.FindGameObjectWithTag("PickupSlot");
+            bool hasStuff = slot == null;
+            if (hasStuff) return;
+            foreach (var children in slot.GetComponentsInChildren<Transform>())
+            {
+                if (children.parent != slot.transform) continue;
+                hasStuff = true;
+                children.SetParent(transform);
+                children.localPosition = Vector3.zero;
+            }
+
+            if (!hasStuff) return;
+        }
+
+        isCleared = true;
+    }
+}
+
+public enum WaypointType
+{
+    WAYPOINT,
+    PICKUP,
+    DROP_POINT
 }
