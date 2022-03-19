@@ -24,6 +24,12 @@ public class NPCMoveWaypointScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (destinationWaypoint == null)
+        {
+            FindObjectOfType<StageDestroyer>().EnableDestruction();
+            return;
+        }
+
         Debug.Log($"{(agent.destination - destinationWaypoint.position).magnitude < 0.1} with {destinationWaypoint.gameObject.name}");
 
         if (destinationWaypoint.GetWaypointState()) UpdateNextWaypoint(destinationWaypoint.GetNextWaypoint());
@@ -47,7 +53,7 @@ public class NPCMoveWaypointScript : MonoBehaviour
 
     public void UpdateNextWaypoint(WaypointComponent waypoint)
     {
-        if (destinationWaypoint.GetNextWaypoint() == waypoint && destinationWaypoint.GetWaypointState())
+        if (destinationWaypoint != null && destinationWaypoint.GetNextWaypoint() == waypoint && destinationWaypoint.GetWaypointState())
         {
             destinationWaypoint = waypoint;
             AsyncOperation op = surface.UpdateNavMesh(surface.navMeshData);
@@ -56,7 +62,8 @@ public class NPCMoveWaypointScript : MonoBehaviour
             if (agent.enabled)
             {
                 agent.speed = 0;
-                agent.SetDestination(destinationWaypoint.position);
+                if (destinationWaypoint)
+                    agent.SetDestination(destinationWaypoint.position);
             }
         }
     }
@@ -85,8 +92,14 @@ public class NPCMoveWaypointScript : MonoBehaviour
         }
         if (agent.enabled)
         {
-            agent.SetDestination(destinationWaypoint.position);
+            if (destinationWaypoint)
+                agent.SetDestination(destinationWaypoint.position);
             agent.speed = speed;
         }
+    }
+
+    public void ForceUpdateSurface()
+    {
+        surface.UpdateNavMesh(surface.navMeshData);
     }
 }

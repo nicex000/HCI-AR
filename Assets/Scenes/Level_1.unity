@@ -502,7 +502,8 @@ GameObject:
   - component: {fileID: 388525035}
   - component: {fileID: 388525036}
   - component: {fileID: 388525037}
-  m_Layer: 0
+  - component: {fileID: 388525038}
+  m_Layer: 7
   m_Name: AR Session Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -621,6 +622,19 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &388525038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388525029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8173133f52352bd4193144afe32025a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drag: 5
 --- !u!1 &463539941
 GameObject:
   m_ObjectHideFlags: 0

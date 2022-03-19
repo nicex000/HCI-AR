@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class WaypointComponent : MonoBehaviour
     [SerializeField] private bool requiresInteraction;
     [SerializeField] private bool disableAgent;
     [SerializeField] private WaypointType type = WaypointType.WAYPOINT;
+    [SerializeField] private ActionMover actionToTrigger;
 
     private bool isCleared = false;
 
@@ -77,6 +79,7 @@ public class WaypointComponent : MonoBehaviour
             }
 
             if (!hasStuff) return;
+            actionToTrigger?.TriggerMove();
         }
 
         isCleared = true;

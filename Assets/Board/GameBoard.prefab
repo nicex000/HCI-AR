@@ -585,7 +585,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: dfae225b72d97d94b8d756a5ea9dad40,
+      objectReference: {fileID: 23800000, guid: 6411e581924fdf545b49e8d1fc353113,
         type: 2}
     - target: {fileID: 5148886328470419795, guid: 4b0f934911876f14888d477ffecf566c,
         type: 3}
@@ -720,3 +720,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5896548270242296471}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6707503310040027078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a7a28d382139d14287f3d5fda648d7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5896548270242296471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &9112595615863532174
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707503310040027078}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.020000009, y: 0.020000007, z: 0.020044725}
+  m_Center: {x: 7.127617e-15, y: -6.663767e-12, z: -0.000022358729}

@@ -22,26 +22,29 @@ public class WallMover : MonoBehaviour
 
     private void Update()
     {
-        if (wallRigidbody != null && wallRigidbody.useGravity)
+        if (affectedByGravity)
         {
-            if (wall.transform.position.y <= startPos.y)
+            if (wallRigidbody != null && wallRigidbody.useGravity)
             {
-                ToggleGravity(false);    
-            }
-        }
-
-        if (wallRigidbody != null && !wallRigidbody.useGravity)
-        {
-            if (gravityTimer > -1)
-            {
-                if (gravityTimer >= timeBeforeGravity)
+                if (wall.transform.position.y <= startPos.y)
                 {
-                    ToggleGravity(true);
-                    gravityTimer = -1f;
+                    ToggleGravity(false);
                 }
-                else
+            }
+
+            if (wallRigidbody != null && !wallRigidbody.useGravity)
+            {
+                if (gravityTimer > -1)
                 {
-                    gravityTimer += Time.deltaTime;
+                    if (gravityTimer >= timeBeforeGravity)
+                    {
+                        ToggleGravity(true);
+                        gravityTimer = -1f;
+                    }
+                    else
+                    {
+                        gravityTimer += Time.deltaTime;
+                    }
                 }
             }
         }
