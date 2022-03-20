@@ -13,20 +13,48 @@ public class NPCMoveWaypointScript : MonoBehaviour
     [SerializeField] private LayerMask wallMask;
     private float speed;
 
+    private Vector3 previousAgentLocalPosition;
+    private Vector3 previousPosition;
+    private Coroutine movingCoRef;
+    private bool agentWasAlreadyDisabled;
+
     // Start is called before the first frame update
     void Start()
     {
         surface.BuildNavMesh();
         agent.SetDestination(destinationWaypoint.position);
         speed = agent.speed;
+        previousPosition = transform.position;
+        FindObjectOfType<LevelUIScript>()?.DisableRaycast();
+        agentWasAlreadyDisabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (previousPosition != transform.position)
+        {
+            if (movingCoRef != null)
+            {
+                StopCoroutine(movingCoRef);
+            }
+            else if (!agent.enabled) agentWasAlreadyDisabled = true;
+
+            agent.enabled = false;
+            movingCoRef = StartCoroutine(UpdateMoveSurface());
+
+        }
+        else if (movingCoRef == null)
+        {
+            previousAgentLocalPosition = agent.transform.localPosition;
+        }
+
+        previousPosition = transform.position;
+
         if (destinationWaypoint == null)
         {
             FindObjectOfType<StageDestroyer>().EnableDestruction();
+            FindObjectOfType<LevelUIScript>().ClearLevel();
             return;
         }
 
@@ -97,9 +125,13 @@ public class NPCMoveWaypointScript : MonoBehaviour
             agent.speed = speed;
         }
     }
-
-    public void ForceUpdateSurface()
+    private IEnumerator UpdateMoveSurface()
     {
-        surface.UpdateNavMesh(surface.navMeshData);
+        yield return new WaitForSeconds(1);
+
+        surface.BuildNavMesh();
+
+        agent.transform.localPosition = previousAgentLocalPosition;
+        if (!agentWasAlreadyDisabled) agent.enabled = true;
     }
 }
