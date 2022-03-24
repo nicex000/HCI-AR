@@ -48,6 +48,10 @@ public class MainMenuScript : MonoBehaviour
             case 1:
                 SceneManager.LoadSceneAsync("Level_1");
                 break;
+
+            case 2:
+                SceneManager.LoadSceneAsync("Level_2");
+                break;
             default: break;
         }
 

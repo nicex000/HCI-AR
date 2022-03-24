@@ -17,6 +17,7 @@ public class NPCMoveWaypointScript : MonoBehaviour
     private Vector3 previousPosition;
     private Coroutine movingCoRef;
     private bool agentWasAlreadyDisabled;
+    private WaypointComponent waypointThatDisabledActor;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class NPCMoveWaypointScript : MonoBehaviour
         previousPosition = transform.position;
         FindObjectOfType<LevelUIScript>()?.DisableRaycast();
         agentWasAlreadyDisabled = false;
+        waypointThatDisabledActor = null;
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class NPCMoveWaypointScript : MonoBehaviour
     {
         if (previousPosition != transform.position)
         {
+            //Debug.Log("Moving. agent is: " + agent.enabled);
             if (movingCoRef != null)
             {
                 StopCoroutine(movingCoRef);
@@ -73,6 +76,7 @@ public class NPCMoveWaypointScript : MonoBehaviour
                         SetAgentParent(true);
                         agent.speed = 0f;
                         agent.enabled = false;
+                        waypointThatDisabledActor = destinationWaypoint;
                     }
                 }
             }
@@ -113,7 +117,7 @@ public class NPCMoveWaypointScript : MonoBehaviour
 
     private void OnCompletedUpdate(AsyncOperation op)
     {
-        if (!agent.enabled && !destinationWaypoint.DisableAgent)
+        if (!agent.enabled && waypointThatDisabledActor != destinationWaypoint)
         {
             SetAgentParent(false);
             agent.enabled = true;
