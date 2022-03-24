@@ -116,10 +116,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5148886328470419795, guid: 2ea37b97267c420458ebd10345bcd45f,
         type: 3}
+      propertyPath: m_TileSize
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 2ea37b97267c420458ebd10345bcd45f,
+        type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 2ea37b97267c420458ebd10345bcd45f,
+        type: 3}
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 23800000, guid: 9966a855e52c18e46a6d46ccd834ed8d,
         type: 2}
+    - target: {fileID: 5148886328470419795, guid: 2ea37b97267c420458ebd10345bcd45f,
+        type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148886328470419795, guid: 2ea37b97267c420458ebd10345bcd45f,
+        type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037626377478521748, guid: 2ea37b97267c420458ebd10345bcd45f,
         type: 3}
       propertyPath: m_Name
@@ -138,7 +158,7 @@ PrefabInstance:
     - target: {fileID: 8784374192129409838, guid: 2ea37b97267c420458ebd10345bcd45f,
         type: 3}
       propertyPath: m_AngularSpeed
-      value: 120
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea37b97267c420458ebd10345bcd45f, type: 3}
