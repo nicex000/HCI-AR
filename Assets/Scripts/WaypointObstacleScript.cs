@@ -24,7 +24,7 @@ public class WaypointObstacleScript : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
-        if (other.gameObject == wall)
-            waypointToClear.SetWaypointState(false);
+        //if (other.gameObject == wall)
+        //    waypointToClear.SetWaypointState(false);
     }
 }

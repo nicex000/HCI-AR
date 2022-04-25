@@ -38,5 +38,6 @@ public class ActionMover : MonoBehaviour
     public void TriggerMove()
     {
         animationTimer = 0f;
+        initialPos = transform.position;
     }
 }

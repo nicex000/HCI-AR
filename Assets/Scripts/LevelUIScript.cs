@@ -62,4 +62,9 @@ public class LevelUIScript : MonoBehaviour
     {
         sceneLoader.allowSceneActivation = true;
     }
+
+    public void QuitToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

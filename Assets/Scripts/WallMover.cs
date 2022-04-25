@@ -49,7 +49,7 @@ public class WallMover : MonoBehaviour
             }
         }
     }
-
+    
 
     private void ToggleGravity(bool enable)
     {
